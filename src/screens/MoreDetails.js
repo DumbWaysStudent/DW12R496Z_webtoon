@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Share,Image,Dimensions,StyleSheet } from 'react-native';
-import { View, Text,Container, Header, Button,Left,Right,Icon, Title, Body,List,ListItem, Thumbnail } from 'native-base';
+import { Share,Image,Dimensions,StyleSheet,FlatList } from 'react-native';
+import { View, Text,Container, Header, Button,Left,Right,Icon, Title, Body } from 'native-base';
 
 export default class MoreDetails extends Component {
   constructor(props) {
@@ -9,17 +9,17 @@ export default class MoreDetails extends Component {
         banners :[
             { id: 0,
                 title: 'The Secret',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                uri: 'https://img.jakpost.net/c/2017/10/01/2017_10_01_33386_1506850714._large.jpg',
                 date: '20 Januari 2018',
                 favorite: true,
             },{ id: 1,
                 title: 'Pasutri Gaje',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                uri: 'https://i.pinimg.com/originals/eb/2b/df/eb2bdf23b1ba0faccb3c74e3a62b080a.jpg',
                 date:'25 Januari 2018',
                 favorite: false,
             },{ id: 2,
                 title: 'Young Mom',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                uri: 'https://i.pinimg.com/originals/b1/d9/36/b1d936715617b0405f065c6eb90ba872.jpg',
                 date:'30 Januari 2018',
                 favorite: false,
             }]    
@@ -31,8 +31,8 @@ export default class MoreDetails extends Component {
         })  
     }
     back(){
-        this.props.navigation.navigate('ForYou')
-    }  
+        this.props.navigation.navigate('Details')
+    }    
   render() {
     return (
       <Container>
@@ -46,7 +46,7 @@ export default class MoreDetails extends Component {
                   </Button>
               </Left>
               <Body>
-                  <Title>Details Komik</Title>
+                  <Title>Eps 1</Title>
               </Body>
               <Right>
                 <Button transparent>
@@ -57,21 +57,25 @@ export default class MoreDetails extends Component {
               </Right>
           </Header>
         <View>
-          <Image
-          style={{width: Dimensions.get('window').width, height:(Dimensions.get('window').height*(35/100))}}
-          source={{uri:'https://images.unsplash.com/photo-1568383694497-a06983132aa9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixlib=rb-1.2.1&q=80&w=800'}}/>
-            <List dataArray={this.state.banners} horizontal={false}
-            renderRow={(item)=>
-                <ListItem thumbnail onPress={()=>this.goToDetails()}>
-                    <Left>
-                        <Thumbnail square source={{uri: item.url}}/>
-                    </Left>                  
-                    <Body>
-                        <Text>Eps. {item.id+1}</Text>
-                        <Text style={st.date}>{item.date}</Text>
-                    </Body>
-                </ListItem>}>                
-            </List>          
+        
+        <FlatList
+       
+       data={ this.state.banners }
+    
+
+       renderItem={({item}) => 
+       
+           <View style={{flex:1, flexDirection: 'row'}}>
+   
+             <Image source = {{ uri: item.uri }} style={st.img} />
+           
+           </View>
+       
+         }
+
+       keyExtractor={(item, index) => index.toString()}
+       
+       />
 
         </View>          
       </Container>
@@ -90,5 +94,10 @@ const st = StyleSheet.create({
     date:{
         fontStyle: 'italic',
         color:'blue',
-    }
+    },img: {
+
+        width: '100%',
+        height: Dimensions.get('window').height,
+     
+    },    
 })

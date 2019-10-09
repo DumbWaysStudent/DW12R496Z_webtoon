@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Share,Image,Dimensions,StyleSheet } from 'react-native';
+import { Share,Image,Dimensions,StyleSheet,FlatList } from 'react-native';
 import { View, Text,Container, Header, Button,Left,Right,Icon, Title, Body,List,ListItem, Thumbnail } from 'native-base';
 
 export default class Details extends Component {
@@ -7,21 +7,15 @@ export default class Details extends Component {
     super(props);
     this.state = {
         banners :[
-            { id: 0,
-                title: 'The Secret',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+            { id: 3,
+                url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTef8NZWFEFxBJJ611aEfkSCGVh5_P-K8PXvfBfmY1VyFlgsaDD',
                 date: '20 Januari 2018',
-                favorite: true,
-            },{ id: 1,
-                title: 'Pasutri Gaje',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-                date:'25 Januari 2018',
-                favorite: false,
             },{ id: 2,
-                title: 'Young Mom',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-                date:'30 Januari 2018',
-                favorite: false,
+                url: 'https://images.everyeye.it/img-notizie/one-piece-nell-ultima-intervista-oda-ammette-risvolti-imprevisti-v3-379791.jpg',
+                date:'10 Januari 2018',
+            },{ id: 1,
+                url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgOoBY96QpFDXqBdwGnlgR8UCsvaa1Ijv4KUG4rS12DPanSz3_',
+                date:'1 Januari 2018',
             }]    
     };
   }
@@ -50,7 +44,7 @@ export default class Details extends Component {
                   </Button>
               </Left>
               <Body>
-                  <Title>Details Komik</Title>
+                  <Title>One Piece</Title>
               </Body>
               <Right>
                 <Button transparent>
@@ -63,20 +57,26 @@ export default class Details extends Component {
         <View>
           <Image
           style={{width: Dimensions.get('window').width, height:(Dimensions.get('window').height*(35/100))}}
-          source={{uri:'https://images.unsplash.com/photo-1568383694497-a06983132aa9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixlib=rb-1.2.1&q=80&w=800'}}/>
-            <List dataArray={this.state.banners} horizontal={false}
-            renderRow={(item)=>
-                <ListItem thumbnail onPress={()=>this.goToDetails()}>
-                    <Left>
-                        <Thumbnail square source={{uri: item.url}}/>
-                    </Left>                  
-                    <Body>
-                        <Text>Eps. {item.id+1}</Text>
-                        <Text style={st.date}>{item.date}</Text>
-                    </Body>
-                </ListItem>}>                
-            </List>          
-
+          source={{uri:'https://media.comicbook.com/2019/07/my-hero-academia-150-152-image-pv-1178294.jpeg?auto=webp&width=696&height=395&crop=696:395,smart'}}/>
+                
+        <FlatList
+            data={this.state.banners}
+            renderItem={({item})=>
+                <View>
+                    <ListItem thumbnail onPress={()=>this.goToDetails()}>
+                        <Left>
+                            <Thumbnail square source={{uri: item.url}}/>
+                        </Left>
+                        <Body>
+                            <Text>Esp. {item.id}</Text>
+                            <Text style={st.date}>{item.date}</Text>
+                        </Body>
+                    </ListItem>
+                </View>
+            }
+            keyExtractor={(item,index)=>index.toString()}
+        />      
+            
         </View>          
       </Container>
 
