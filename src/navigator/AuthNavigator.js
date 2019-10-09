@@ -23,7 +23,7 @@ const FavoriteStack = createStackNavigator({
   Favorite: {
     screen: Favorite,
     navigationOptions: ({ navigation }) => ({
-      title: 'Favorite'
+      header: null
     }),
   }
 });
@@ -32,7 +32,7 @@ const ProfileStack = createStackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: ({ navigation }) => ({
-      title: 'Profile'
+      title: 'Favorite'
     }),
   }
 });
