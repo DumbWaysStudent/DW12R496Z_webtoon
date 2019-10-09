@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet,Alert } from 'react-native';
 import { Container, Input, Button, Text, View,Item, Label, Icon } from 'native-base';
+import { StackActions, NavigationActions } from 'react-navigation'
 
 
 export default class Home extends Component {
@@ -32,6 +33,7 @@ export default class Home extends Component {
         }else{
             if(this.state.email == 'admin@admin.com' && this.state.password == 'admin'){
                 Alert.alert('Udah sukses!');
+                this.props.navigation.navigate('ForYou')
             }else{
                 Alert.alert('Username / Password salah!')
             }
