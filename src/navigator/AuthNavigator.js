@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Icon } from 'native-base';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
 
 import ForYou from './../screens/ForYou';
 import Favorite from './../screens/Favorite';
 import Profile from './../screens/Profile';
+
+
 
 const ForYouStack = createStackNavigator({
   ForYou: {
@@ -33,6 +36,8 @@ const ProfileStack = createStackNavigator({
     }),
   }
 });
+
+
 
 export default createBottomTabNavigator({ 
     ForYou: { 

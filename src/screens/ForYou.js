@@ -61,6 +61,9 @@ export default class ForYou extends Component {
         let icon = this.state.banners[index].favorite ? 'star' : 'star-outline'
 
         return icon
+    }
+    goToDetails(){
+        this.props.navigation.navigate('Details')
     }      
     render() {
         return (
@@ -90,7 +93,7 @@ export default class ForYou extends Component {
             <Text style={[st.title,st.mt]}>All</Text>
             <List dataArray={this.state.banners} horizontal={false}
             renderRow={(item)=>
-                <ListItem thumbnail>
+                <ListItem thumbnail onPress={()=>this.goToDetails()}>
                     <Left>
                         <Thumbnail square source={{uri: item.url}}/>
                     </Left>                  
@@ -119,7 +122,7 @@ export default class ForYou extends Component {
 
 const st = StyleSheet.create({
     title:{
-        fontSize:25,
+        fontSize:18,
     },
     mt:{
         marginLeft:10,
