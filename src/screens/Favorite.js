@@ -55,9 +55,6 @@ export default class Favorite extends Component {
               <Input placeholder="Search" />
               <Icon name="ios-search" />
           </Item>
-          <Button transparent>
-              <Text>Search</Text>
-          </Button>
       </Header>
       <FlatList
             data={this.state.banners}
