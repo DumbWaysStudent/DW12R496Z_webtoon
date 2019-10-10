@@ -6,7 +6,7 @@ import { createAppContainer } from 'react-navigation';
 
 import ForYou from './../screens/ForYou';
 import Favorite from './../screens/Favorite';
-import Profile from './../screens/Profile';
+import Profile from './../screens/ProfileRoot';
 import { Text } from 'react-native-elements';
 
 const ForYouStack = createStackNavigator({

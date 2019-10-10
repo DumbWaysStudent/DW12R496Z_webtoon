@@ -12,18 +12,7 @@ export default class Profile extends Component {
   render() {
     return (
       <Container>
-          <Header>
-              <Left>
-                <Title>One Piece</Title>
-              </Left>
-              <Right>
-                <Button transparent>
-                    <Icon 
-                    onPress={()=> this.onClick()}
-                    name="create"></Icon>
-                </Button>
-              </Right>
-          </Header>
+
         <View style={[st.center,st.mt]}>
           
           <Thumbnail style={st.imgProfile} source={{uri:'https://media.comicbook.com/2019/07/my-hero-academia-150-152-image-pv-1178294.jpeg?auto=webp&width=696&height=395&crop=696:395,smart'}}/>
