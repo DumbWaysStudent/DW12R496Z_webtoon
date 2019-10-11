@@ -3,36 +3,36 @@ import React, { Component } from 'react';
 //import react in our code.
  
 import { StyleSheet, View, Image, TouchableOpacity, Alert, Text } from 'react-native';
-import { Container, Icon, Button,Body, List, Thumbnail, ListItem,Left,Right } from 'native-base';
+import { Container, Icon, Button,Body, List, Thumbnail, ListItem,Left,Right,Item,Input } from 'native-base';
 
 //import all the components we are going to use.
  
-export default class Creation extends Component {
+export default class CreateEpisode extends Component {
   constructor(props) {
     super(props);
     this.state = {
       banners :[
         { id: 0,
-            title: 'The Secret',
+            title: '1.cover.png',
             url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-            genre: '34 Episode(s)',
+            genre: 'romance',
             favorite: true,
         },{ id: 1,
-            title: 'Pasutri Gaje',
+            title: '2. intro.png',
             url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-            genre:'54 Episode(s)',
+            genre:'comedy',
             favorite: false,
         },{ id: 2,
-            title: 'Young Mom',
+            title: '3. komik.png',
             url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-            genre:'104 Episode(s)',
+            genre:'horror',
             favorite: false,
         }] 
     };
   }  
   clickHandler = () => {
     //function to handle click on floating Action Button
-    this.props.navigation.navigate('Create')
+    Alert.alert('Floating Button Clicked');
   };
   changeCheckBox(xId){
     let index = this.state.banners.findIndex((x) => x.id == xId)
@@ -57,8 +57,11 @@ goToDetails(){
   render() {
     return (
       <Container>
-
-      
+      <View style={st.mg}>
+        <Item regular>
+            <Input placeholder="Type Name here...." />
+        </Item>
+      </View>
       <View>
         <List dataArray={this.state.banners} horizontal={false}
         renderRow={(item)=>
@@ -67,38 +70,23 @@ goToDetails(){
                     <Thumbnail square source={{uri: item.url}}/>
                 </Left>                  
                 <Body>
-                    <Text>{item.title}</Text>
-                    <Text style={st.genre}>{item.genre}</Text>
+                    <Text style={{fontSize:20}}>{item.title}</Text>
+                    <View style={{width:100}}>
+                        <Button block danger>
+                            <Text>Delete</Text>
+                        </Button>             
+                    </View>
                 </Body>
-                <Right>
-                    <Button 
-                    transparent>
-                        <Icon          
-                        onPress={() => this.changeCheckBox(item.id)}           
-                        name={this.favoriteShow(item.id)}
-                        />
-                    </Button>
-                </Right>
             </ListItem>}>                
-        </List>         
+        </List>   
       </View>
-      <View style={styles.MainContainer}>       
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={this.clickHandler}
-          style={styles.TouchableOpacityStyle}>
-          <Image
-            //We are making FAB using TouchableOpacity with an image
-            //We are using online image here
-             source={{uri:'https://raw.githubusercontent.com/AboutReact/sampleresource/master/plus_icon.png',
-            }}
-            //You can use you project image Example below
-            //source={require('./images/float-add-icon.png')}
-            style={styles.FloatingButtonStyle}
-          />
-        </TouchableOpacity>
+      <View style={st.mg}>
+         <Button block success>
+            <Text>+ Image</Text>
+          </Button>             
       </View>
-      </Container>      
+
+    </Container>
     );
   }
 }
@@ -139,5 +127,8 @@ const st = StyleSheet.create({
   genre:{
       fontStyle: 'italic',
       color:'blue',
+  },
+  mg:{
+      margin: 20,
   }
 })

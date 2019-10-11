@@ -13,19 +13,19 @@ export default class Create extends Component {
     this.state = {
       banners :[
         { id: 0,
-            title: 'The Secret',
+            title: 'Ep. 1',
             url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-            genre: 'romance',
+            genre: '20 Desember 2018',
             favorite: true,
         },{ id: 1,
-            title: 'Pasutri Gaje',
+            title: 'Ep. 2',
             url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-            genre:'comedy',
+            genre:'1 Januari 2019',
             favorite: false,
         },{ id: 2,
-            title: 'Young Mom',
+            title: 'Ep. 3',
             url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-            genre:'horror',
+            genre:'5 Januari 2019',
             favorite: false,
         }] 
     };
@@ -52,7 +52,10 @@ favoriteShow(xId){
 }
 goToDetails(){
   this.props.navigation.navigate('Details')
-}    
+}   
+AddEposide(){
+    this.props.navigation.navigate('CreateEpisode')
+} 
 
   render() {
     return (
@@ -86,7 +89,8 @@ goToDetails(){
         </List>   
       </View>
       <View style={st.mg}>
-         <Button block success>
+         <Button block light
+            onPress={()=>this.AddEposide()}>
             <Text>+ Add Episode</Text>
           </Button>             
       </View>
