@@ -29,7 +29,7 @@ pastToon is clone of webtoon commic reder.
   
   <img src="https://content.screencast.com/users/danielanto109/folders/Default/media/50f10501-01d5-47d4-948e-7a7c3e6353ef/Screenshot_2019-10-11-16-37-24-79.png" width="200" height="350" alt="Details Commic"/>
   
-  <img src="https://www.screencast.com/users/danielanto109/folders/Default/media/28a86351-9fd2-44e7-ba1b-88672e44c5c5" width="200" height="350" alt="Reading commic"/>
+  <img src="https://content.screencast.com/users/danielanto109/folders/Default/media/28a86351-9fd2-44e7-ba1b-88672e44c5c5/Screenshot_2019-10-11-16-37-27-35.png" width="200" height="350" alt="Reading commic"/>
 </p>
 
 
