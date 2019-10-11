@@ -6,6 +6,7 @@ import MoreDetails from './../screens/MoreDetails';
 import Creation from './../screens/Creation';
 import Create from './../screens/Create';
 import CreateEpisode from './../screens/CreateEpisode';
+import Edit from './../screens/Edit';
 
 
 const UnauthNavigator = createStackNavigator({
@@ -33,6 +34,11 @@ const UnauthNavigator = createStackNavigator({
     screen: CreateEpisode,
     navigationOptions: ({ navigation }) => ({
       title:'Create Episode',
+    }),
+  },Edit: {
+    screen: Edit,
+    navigationOptions: ({ navigation }) => ({
+      title:'Edit Webtoon',
     }),
   }    
 });
