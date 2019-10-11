@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 //import react in our code.
  
 import { StyleSheet, View, Image, TouchableOpacity, Alert, Text } from 'react-native';
-import { Container, Icon, Button,Body, List, Thumbnail, ListItem,Left,Right } from 'native-base';
+import { Container, Icon, Button,Body, List, Thumbnail, ListItem,Left,Right,Item,Input } from 'native-base';
 
 //import all the components we are going to use.
  
-export default class Creation extends Component {
+export default class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,7 @@ export default class Creation extends Component {
   }  
   clickHandler = () => {
     //function to handle click on floating Action Button
-    this.props.navigation.navigate('Create')
+    Alert.alert('Floating Button Clicked');
   };
   changeCheckBox(xId){
     let index = this.state.banners.findIndex((x) => x.id == xId)
@@ -57,8 +57,11 @@ goToDetails(){
   render() {
     return (
       <Container>
-
-      
+      <View style={st.mg}>
+        <Item regular>
+            <Input placeholder="Type Title here...." />
+        </Item>
+      </View>
       <View>
         <List dataArray={this.state.banners} horizontal={false}
         renderRow={(item)=>
@@ -80,25 +83,15 @@ goToDetails(){
                     </Button>
                 </Right>
             </ListItem>}>                
-        </List>         
+        </List>   
       </View>
-      <View style={styles.MainContainer}>       
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={this.clickHandler}
-          style={styles.TouchableOpacityStyle}>
-          <Image
-            //We are making FAB using TouchableOpacity with an image
-            //We are using online image here
-             source={{uri:'https://raw.githubusercontent.com/AboutReact/sampleresource/master/plus_icon.png',
-            }}
-            //You can use you project image Example below
-            //source={require('./images/float-add-icon.png')}
-            style={styles.FloatingButtonStyle}
-          />
-        </TouchableOpacity>
+      <View style={st.mg}>
+         <Button block success>
+            <Text>+ Add Episode</Text>
+          </Button>             
       </View>
-      </Container>      
+
+    </Container>
     );
   }
 }
@@ -139,5 +132,8 @@ const st = StyleSheet.create({
   genre:{
       fontStyle: 'italic',
       color:'blue',
+  },
+  mg:{
+      margin: 20,
   }
 })

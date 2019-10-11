@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Details from './../screens/Details'
 import MoreDetails from './../screens/MoreDetails';
 import Creation from './../screens/Creation';
+import Create from './../screens/Create';
 
 
 const UnauthNavigator = createStackNavigator({
@@ -21,6 +22,11 @@ const UnauthNavigator = createStackNavigator({
     screen: Creation,
     navigationOptions: ({ navigation }) => ({
       title:'My Weebtoon',
+    }),
+  },Create: {
+    screen: Create,
+    navigationOptions: ({ navigation }) => ({
+      title:'Create Webtoon',
     }),
   }   
 });
