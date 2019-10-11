@@ -38,7 +38,7 @@ pastToon is clone of webtoon commic reder.
 * Favorite commic
 * Manage Commic
 
-## Why Iyat?
+## Why pastToon?
 * Easy-to-use!
 * It's React Native, so it support android & iOS by default!
 * Simple Code, so you can easily contribute on it.
