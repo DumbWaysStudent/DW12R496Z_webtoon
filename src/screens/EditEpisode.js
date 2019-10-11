@@ -51,7 +51,7 @@ favoriteShow(xId){
     return icon
 }
 goToDetails(){
-  this.props.navigation.navigate('EditEpisode')
+  this.props.navigation.navigate('Details')
 }    
 
   render() {
@@ -84,6 +84,9 @@ goToDetails(){
          <Button block success>
             <Text>+ Image</Text>
           </Button>             
+          <Button block danger>
+            <Text>Delete Episode</Text>
+          </Button>              
       </View>
 
     </Container>

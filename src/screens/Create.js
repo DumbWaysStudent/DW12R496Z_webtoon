@@ -51,7 +51,7 @@ favoriteShow(xId){
     return icon
 }
 goToDetails(){
-  this.props.navigation.navigate('Details')
+  this.props.navigation.navigate('EditEpisode')
 }   
 AddEposide(){
     this.props.navigation.navigate('CreateEpisode')

@@ -93,8 +93,7 @@ AddEposide(){
             onPress={()=>this.AddEposide()}>
             <Text>+ Add Episode</Text>
           </Button>             
-          <Button block danger
-            onPress={()=>this.AddEposide()}>
+          <Button block danger>
             <Text>Delete Webtoon</Text>
           </Button>             
       </View>
