@@ -24,13 +24,44 @@ export default class ProfileRoot extends Component {
     }))
   }
 
+  toCreation(){
+    this.props.navigation.navigate('Creation')
+  }
 
+  toLogout(){
+    this.props.navigation.navigate('Login')
+  }  
+  
   render() {
     let mode;
     if(this.state.isEdit){
       mode = <EditProfile/>
     }else{
-      mode = <Profile/>
+      mode =       
+    <Container>
+      <View style={[st.center,st.mt]}>
+        <Thumbnail style={st.imgProfile} source={{uri:'https://media.comicbook.com/2019/07/my-hero-academia-150-152-image-pv-1178294.jpeg?auto=webp&width=696&height=395&crop=696:395,smart'}}/>
+        <Text style={st.profileText}>Your Name</Text>              
+      </View>
+      <View>
+        <List>
+            <ListItem>
+                <Left>
+                  <Text onPress={()=> this.toCreation()}>My WebToon Creation</Text>
+                </Left>
+                <Right>
+                  <Icon name='arrow-forward'/>
+                </Right>
+            </ListItem>
+            <ListItem>
+                <Left>
+                  <Text onPress={()=> this.toLogout()}>Log out</Text>
+                </Left>
+            </ListItem>
+        </List>      
+      </View>          
+    </Container>
+
     }
     return (
     <Container>  
@@ -46,10 +77,33 @@ export default class ProfileRoot extends Component {
             </Button>
           </Right>
       </Header>
-     
         {mode}
       </Container>
       
     );
   }
 }
+
+const st = StyleSheet.create({
+  title:{
+      fontSize:25,
+  },
+  mt:{
+      marginTop:80,
+  },
+  date:{
+      fontStyle: 'italic',
+      color:'blue',
+  },
+  center:{
+    alignItems:'center',
+  },
+  imgProfile:{
+    borderRadius:150/2,
+    width:  150, 
+    height: 150,
+  },
+  profileText:{
+    fontSize: 26,
+  }
+})

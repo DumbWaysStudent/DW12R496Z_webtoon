@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Share,Image,Dimensions,StyleSheet,FlatList } from 'react-native';
 import { View, Text,Container, Header, Button,Left,Right,Icon, Title, Body,List,ListItem, Thumbnail } from 'native-base';
+import ProfileRoot from './ProfileRoot';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -8,33 +9,32 @@ export default class Profile extends Component {
     this.state = {
     };
   }
-
+  toCreation(){
+    this.props.navigation.navigate('Login')
+  }
   render() {
     return (
       <Container>
-
         <View style={[st.center,st.mt]}>
-          
           <Thumbnail style={st.imgProfile} source={{uri:'https://media.comicbook.com/2019/07/my-hero-academia-150-152-image-pv-1178294.jpeg?auto=webp&width=696&height=395&crop=696:395,smart'}}/>
-          <Text style={st.profileText}>Your Name</Text>
-                            
+          <Text style={st.profileText}>Your Name</Text>              
         </View>
         <View>
-        <List>
-                        <ListItem>
-                            <Left>
-                              <Text>My WebToon Creation</Text>
-                            </Left>
-                            <Right>
-                              <Icon name='arrow-forward'/>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                              <Text>Log out</Text>
-                            </Left>
-                        </ListItem>
-                    </List>      
+          <List>
+              <ListItem>
+                  <Left>
+                    <Text onPress={()=> this.toCreation()}>My WebToon Creation</Text>
+                  </Left>
+                  <Right>
+                    <Icon name='arrow-forward'/>
+                  </Right>
+              </ListItem>
+              <ListItem>
+                  <Left>
+                    <Text>Log out</Text>
+                  </Left>
+              </ListItem>
+          </List>      
         </View>          
       </Container>
 
