@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Share,Image,Dimensions,StyleSheet,FlatList } from 'react-native';
 import { View, Text,Container, Header, Button,Left,Right,Icon, Title, Body,List,ListItem, Thumbnail } from 'native-base';
-import ProfileRoot from './ProfileRoot';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ export default class Profile extends Component {
     };
   }
   toCreation(){
-    this.props.navigation.navigate('Login')
+    this.props.navigation.navigate('Creation')
   }
   render() {
     return (

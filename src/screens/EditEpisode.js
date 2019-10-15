@@ -7,7 +7,7 @@ import { Container, Icon, Button,Body, List, Thumbnail, ListItem,Left,Right,Item
 
 //import all the components we are going to use.
  
-export default class CreateEpisode extends Component {
+export default class EditEpisode extends Component {
   constructor(props) {
     super(props);
     this.state = {

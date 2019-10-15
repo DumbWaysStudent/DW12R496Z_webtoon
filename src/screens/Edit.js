@@ -51,7 +51,7 @@ favoriteShow(xId){
     return icon
 }
 goToDetails(){
-  this.props.navigation.navigate('Details')
+  this.props.navigation.navigate('CreateEpisode')
 }   
 AddEposide(){
     this.props.navigation.navigate('CreateEpisode')
@@ -83,7 +83,7 @@ AddEposide(){
                         onPress={() => this.changeCheckBox(item.id)}           
                         name={this.favoriteShow(item.id)}
                         />
-                    </Button>
+                    </Button>;
                 </Right>
             </ListItem>}>                
         </List>   

@@ -6,7 +6,8 @@ import { createAppContainer } from 'react-navigation';
 
 import ForYou from './../screens/ForYou';
 import Favorite from './../screens/Favorite';
-import Profile from './../screens/ProfileRoot';
+import Profile from './../screens/Profile';
+import EditProfile from './../screens/EditProfile';
 import { Text } from 'react-native-elements';
 
 const ForYouStack = createStackNavigator({
@@ -30,6 +31,11 @@ const FavoriteStack = createStackNavigator({
 const ProfileStack = createStackNavigator({
   Profile: {
     screen: Profile,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    }),
+  },EditProfile: {
+    screen: EditProfile,
     navigationOptions: ({ navigation }) => ({
       header: null
     }),

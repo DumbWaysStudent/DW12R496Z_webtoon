@@ -34,11 +34,21 @@ export default class ProfileRoot extends Component {
   
   render() {
     let mode;
-    if(this.state.isEdit){
-      mode = <EditProfile/>
-    }else{
-      mode =       
-    <Container>
+    return (
+    <Container>  
+      <Header>
+          <Left>
+            <Title>{this.state.title}</Title>
+          </Left>
+          <Right>
+            <Button transparent>
+                <Icon 
+                onPress={()=> this.mode()}
+                name={this.state.icon}></Icon>
+            </Button>
+          </Right>
+      </Header>
+      <Container>
       <View style={[st.center,st.mt]}>
         <Thumbnail style={st.imgProfile} source={{uri:'https://media.comicbook.com/2019/07/my-hero-academia-150-152-image-pv-1178294.jpeg?auto=webp&width=696&height=395&crop=696:395,smart'}}/>
         <Text style={st.profileText}>Your Name</Text>              
@@ -61,23 +71,6 @@ export default class ProfileRoot extends Component {
         </List>      
       </View>          
     </Container>
-
-    }
-    return (
-    <Container>  
-      <Header>
-          <Left>
-            <Title>{this.state.title}</Title>
-          </Left>
-          <Right>
-            <Button transparent>
-                <Icon 
-                onPress={()=> this.mode()}
-                name={this.state.icon}></Icon>
-            </Button>
-          </Right>
-      </Header>
-        {mode}
       </Container>
       
     );
