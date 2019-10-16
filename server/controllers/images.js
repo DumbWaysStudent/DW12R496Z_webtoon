@@ -3,21 +3,23 @@ const Image = models.images
 const Episode = models.episodes
 
 exports.index = (req, res) => {
-    Image.findAll({
-        include: [{
-            model: Episode,
-            as: "idEpisode"
-        }]
-    }).then(result=>res.send(result))
+    try{
+        Image.findAll({
+            include: [{
+                model: Episode,
+                as: "idEpisode"
+            }]
+        }).then(result=>res.send(result))
+    }catch(err){
+        res.send({
+            err
+        })
+    }
 }
 
 exports.show = (req, res) => {
-    Image.findOne({
-        where:{id: req.params.id},
-        include: [{
-            model: Episode,
-            as: "idEpisode"
-        }]
+    Image.findAll({
+        where:{id_episode: req.params.id},
     }
     ).then(result=> res.send(result))
 }

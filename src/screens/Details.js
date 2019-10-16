@@ -40,9 +40,9 @@ export default class Details extends Component {
     back(){
         // this.props.navigation.goBack()
     }  
-    goToDetails(){
+    goToDetails(id,title){
         // this.props.navigation.navigate('ForYou')
-        // this.props.navigation.navigate('MoreDetails')
+        this.props.navigation.navigate('MoreDetails',{id,title})
     }  
   render() {
     return (
@@ -76,7 +76,7 @@ export default class Details extends Component {
             data={this.state.datasBanners}
             renderItem={({item})=>
             
-                    <ListItem thumbnail onPress={()=>this.goToDetails()}>
+                    <ListItem thumbnail onPress={()=>this.goToDetails(item.id,item.title)}>
                         <Left>
                             <Thumbnail square source={{uri: 'https://media.comicbook.com/2019/07/my-hero-academia-150-152-image-pv-1178294.jpeg?auto=webp&width=696&height=395&crop=696:395,smart'}}/>
                         </Left>
