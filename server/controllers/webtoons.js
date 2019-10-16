@@ -29,7 +29,11 @@ exports.search = async (req, res) => {
 exports.show = (req, res) => {
     Webtoon.findOne({
         where:{id: req.params.id}
-    }).then(result=> res.send(result))
+    }).then(result=> res.send(result)).catch((err=>{
+        res.send({
+            err,
+        })
+    }))
 }
 
 exports.store = (req, res) => {

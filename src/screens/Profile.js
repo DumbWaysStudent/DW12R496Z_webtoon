@@ -30,7 +30,7 @@ export default class Profile extends Component {
               </ListItem>
               <ListItem>
                   <Left>
-                    <Text>Log out</Text>
+                    <Text onPress={()=> this.props.navigation.navigate('Login')}>Log out</Text>
                   </Left>
               </ListItem>
           </List>      

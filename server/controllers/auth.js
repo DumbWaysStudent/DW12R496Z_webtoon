@@ -58,6 +58,8 @@ exports.register = (req, res)=>{
                     email
                 }
             })
+        }).catch(err=>{
+            console.log(err)
         })            
 
     });   

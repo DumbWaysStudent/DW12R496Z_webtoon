@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import { Container, Header, Item, Input, Icon, Button,Body, List, Thumbnail, ListItem,Left,Right, View } from 'native-base'
 import Slideshow from 'react-native-image-slider-show'
 
@@ -34,6 +34,7 @@ export default class ForYou extends Component {
 
     componentWillUnmount() {
         clearInterval(this.state.interval)
+        clearInterval(this.state.datasBanners)
     }
 
     getDatas = async () => {
@@ -50,9 +51,9 @@ export default class ForYou extends Component {
     }    
      
 
-    goToDetails(){
-        this.getDatas()   
-        // this.props.navigation.navigate('Details')
+    goToDetails(id,title){
+        // this.getDatas()   
+        this.props.navigation.navigate('Details', {id,title})
     }      
     render() {
         return (
@@ -72,11 +73,14 @@ export default class ForYou extends Component {
             onPositionChanged={position => this.setState({ position })} />
             <View>
                 <Text style={[st.title,st.mt]}>Favorite</Text>            
-                <List dataArray={this.state.datasBanners} horizontal={true} renderRow={(item)=>
-                    <ListItem thumbnail style={{marginTop: -20,}}>
+                <List dataArray={this.state.datasBanners} showsHorizontalScrollIndicator={false} horizontal={true} renderRow={(item)=>
+                    <ListItem thumbnail style={{marginTop: -20,}} onPress={()=>this.goToDetails(item.id,item.title)}>
                         <Body>
                             <Thumbnail source={{uri: item.img_banner}} />
-                            <Text>{item.title}</Text> 
+                            <Text>{ ((item.title).length > 15) ? 
+                                (((item.title).substring(0,15-3)) + '...') : 
+                                item.title }
+                            </Text>                            
                         </Body>
                     </ListItem>}>  
                 </List>                
@@ -84,19 +88,27 @@ export default class ForYou extends Component {
             <Text style={[st.title,st.mt]}>All</Text>
             <List dataArray={this.state.datasBanners} horizontal={false}
             renderRow={(item)=>
-                <ListItem thumbnail onPress={()=>this.goToDetails()}>
+                <ListItem thumbnail onPress={()=>this.goToDetails(item.id,item.title)}>
+                    
                     <Left>
                         <Thumbnail square source={{uri: item.img_banner}}/>
                     </Left>                  
                     <Body>
-                        <Text>{item.title}</Text>
+                        <Text>{ ((item.title).length > 20) ? 
+                            (((item.title).substring(0,20-3)) + '...') : 
+                            item.title }
+                        </Text>                          
+                        <Text>{item.createdBy.name}</Text>
                     </Body>
                     <Right>
                         <Button 
                         transparent>
-                            <Icon/>
+                            <Icon          
+                            name="star"
+                            />
                         </Button>
                     </Right>
+
                 </ListItem>}> 
             </List>
         </Container>            
