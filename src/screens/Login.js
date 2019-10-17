@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet,Alert } from 'react-native';
 import { Container, Input, Button, Text, View,Item, Label, Icon } from 'native-base';
 
+import AuthService from './../navigator/AuthService'
+import axios from 'axios'
+import env from './../../env'
 
 export default class Login extends Component {
     constructor(props) {
@@ -25,17 +28,36 @@ export default class Login extends Component {
             type: !prevState.type
         }));
     }
-    heandleLogin(){
+    heandleLogin = async() => {
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
         if(!reg.test(this.state.email)){
             Alert.alert('Please enter a valid email!')
         }else{
-            if(this.state.email == 'admin@admin.com' && this.state.password == 'admin'){
-                Alert.alert('Udah sukses!');
-                this.props.navigation.navigate('ForYou')
-            }else{
-                Alert.alert('Username / Password salah!')
-            }
+            const auth = new (AuthService)
+            const url = `${env.apiUrl}/login`            
+                await axios({
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    data: {
+                        email: this.state.email,
+                        password: this.state.password                   
+                    },
+                    url,
+                }).then(async result=>{
+                    if (result.data.error) {
+                        alert('username / password salah!')
+                    }else{
+                        await auth.save(result.data.data)
+                        this.props.navigation.navigate('ForYou')                      
+                    }
+                }).catch(error=>{
+                    if(typeof error.response.data.msg !== "undefined"){
+                        alert(error.response.data.msg);
+                    }
+                });
+
         }
     }
   render() {

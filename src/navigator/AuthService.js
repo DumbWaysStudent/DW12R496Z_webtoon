@@ -1,13 +1,8 @@
 import { AsyncStorage } from "react-native";
 
 export default class AuthService {
-    test = async ()=>{
-        console.log('Loreeeeeeeeeeem')
-    }
     save = async (data) => {
-        console.log(data);
         for(key in data){
-                
             await AsyncStorage.setItem(`authUser.${key}`, data[key] );
         }
     }

@@ -49,8 +49,9 @@ export default class Register extends Component {
                 },
                 url,
             }).then(async result=>{
+                console.log(result.data.data)
                 await auth.save(result.data.data)
-                this.props.navigation.navigate('ForYou')                  
+                // this.props.navigation.navigate('ForYou')                  
             })
         }
     }

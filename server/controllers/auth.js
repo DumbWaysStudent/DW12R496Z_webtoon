@@ -18,9 +18,12 @@ exports.login = async (req, res)=>{
                         const token = jwt.sign({ userId: user.id }, 'RahasiaIlahi');
                         res.send({
                             message:"Success!",
-                            user:{
-                                userId:user.id,
-                                token
+                            data:{
+                                id: user.id,
+                                image: user.image,
+                                name: user.name,
+                                email: user.email,
+                                token,
                             }
                         }) 
                     }else{
