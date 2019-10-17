@@ -2,6 +2,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Login from './../screens/Login'
+import Register from './../screens/Register'
 
 
 const UnauthNavigator = createStackNavigator({
@@ -9,6 +10,11 @@ const UnauthNavigator = createStackNavigator({
     screen: Login,
     navigationOptions: ({ navigation }) => ({
       title: 'Login'
+    }),
+  },Register: {
+    screen: Register,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Register'
     }),
   }
 });

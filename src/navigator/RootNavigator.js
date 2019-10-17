@@ -1,11 +1,11 @@
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 
 import UnauthNavigator from './UnauthNavigator'
-import TestNavigator from './TestNavigator'
-import DetailsNavigator from './DetailsNavigator'
+import AuthNavigator from './AuthNavigator'
+
 const RootNavigator = createSwitchNavigator({
   UnauthNavigator,
-  TestNavigator
+  AuthNavigator
 });
 
 export default createAppContainer(RootNavigator);
